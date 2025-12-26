@@ -9,7 +9,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v2
         with:
           aws-access-key-id: ${{ secrets.AKIARCCRJLABKB6KWX3B }}
-          aws-secret-access-key: ${{ secrets.9WBnt8/k5scK+JpRS4x5jsSDJqrWzu9Wy4wH0sbA }}
+          aws-secret-access-key: ${{ secrets.9WBnt8/k5scK+JpRS4×5jsSDJqrWzu9Wy4wHOsbA }}
           aws-region: ${{ secrets.eu-west-3 }}
       - name: Test AWS credentials validity
         run: |
