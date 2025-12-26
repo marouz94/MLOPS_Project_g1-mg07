@@ -1,21 +1,28 @@
-[cite_start]name: Test AWS Connection [cite: 38]
+name: Test AWS Connection
+
 on:
-  [cite_start]workflow_dispatch [cite: 39, 40]
+  workflow_dispatch:
+
 jobs:
-  [cite_start]test-aws: [cite: 41, 42]
-    [cite_start]runs-on: ubuntu-latest [cite: 43]
+  test-aws:
+    runs-on: ubuntu-latest
     steps:
-      - [cite_start]name: Configure AWS credentials [cite: 44, 45]
-        [cite_start]uses: aws-actions/configure-aws-credentials@v2 [cite: 46]
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
         with:
-          [cite_start]aws-access-key-id: ${{ secrets.AKIARCCRJLABKB6KWX3B }} [cite: 47, 48]
-          [cite_start]aws-secret-access-key: ${{ secrets.9WBnt8/k5scK+JpRS4x5jsSDJqrWzu9Wy4wH0sbA }} [cite: 49]
-          [cite_start]aws-region: ${{ secrets.AWS_REGION }} [cite: 50]
-      - [cite_start]name: Test AWS credentials validity [cite: 51]
-        [cite_start]run: | [cite: 52]
-          [cite_start]echo "Testing AWS credentials..." [cite: 53]
-          [cite_start]aws sts get-caller-identity [cite: 54]
-      - [cite_start]name: List S3 buckets [cite: 55]
-        [cite_start]run: | [cite: 56]
-          [cite_start]echo "Listing S3 buckets..." [cite: 57]
-          [cite_start]aws s3 ls [cite: 57]
+          aws-access-key-id: ${{ secrets.AKIARCCRJLABKB6KWX3B }}
+          aws-secret-access-key: ${{ secrets.9WBnt8/k5scK+JpRS4x5jsSDJqrWzu9Wy4wH0sbA }}
+          aws-region: ${{ secrets.eu-west-3 }}
+
+      - name: Test AWS credentials validity
+        run: |
+          echo "Testing AWS credentials..."
+          aws sts get-caller-identity
+
+      - name: List S3 buckets
+        run: |
+          echo "Listing S3 buckets..."
+          aws s3 ls
