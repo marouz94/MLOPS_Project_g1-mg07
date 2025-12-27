@@ -16,7 +16,7 @@ class PredictionInput(BaseModel):
 
 @app.get("/")
 def home():
-    return {"message": "Bienvenue sur l'API de prédiction des ventes (Groupe 1)"}
+    return {"message": "Bienvenue sur l'API de prédiction des ventes "}
 
 @app.post("/predict")
 def predict(input_data: PredictionInput):
