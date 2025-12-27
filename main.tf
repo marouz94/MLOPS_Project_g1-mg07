@@ -8,8 +8,29 @@ required_providers {
 }
 # Configuration du backend S3 pour stocker le state
 backend "s3" {
-   bucket  = "infrastats-g&mg07"
+   bucket  = "infrastats-g1mg07"
    key     = "g1mg07.tfstate"
    region  = "eu-west-3"
    encrypt = true
 } }
+
+# Bloc Provider indispensable
+provider "aws" {
+  region = "eu-west-3"
+}
+
+# Création du registre Docker (ECR)
+resource "aws_ecr_repository" "api_repo" {
+  name                 = "sales-forecast-api-g1"
+  image_tag_mutability = "MUTABLE"
+  force_delete         = true
+
+  image_scanning_configuration {
+    scan_on_push = true
+  }
+}
+
+# Output pour récupérer l'URL du registre
+output "ecr_repository_url" {
+  value = aws_ecr_repository.api_repo.repository_url
+}
