@@ -23,7 +23,7 @@ provider "aws" {
 
 # Création du registre Docker (ECR)
 resource "aws_ecr_repository" "api_repo" {
-  name                 = "ecr-g1mg07"
+  name                 = "ecr-api-g1mg07"
   image_tag_mutability = "MUTABLE"
   force_delete         = true
 
