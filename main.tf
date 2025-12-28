@@ -21,7 +21,7 @@ provider "aws" {
 
 # Création du registre Docker (ECR)
 resource "aws_ecr_repository" "api_repo" {
-  name                 = "sales-forecast-api-g1"
+  name                 = "ecr-g1mg07"
   image_tag_mutability = "MUTABLE"
   force_delete         = true
 
