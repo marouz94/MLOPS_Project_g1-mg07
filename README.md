@@ -35,3 +35,19 @@ L'API est automatiquement déployée sur AWS App Runner via une image Docker sto
 Nom de l'app runner : apprunner-g1mg07
 
 URL de l'API : https://8pmqadvq2q.eu-west-3.awsapprunner.com/docs
+
+## Détails du Modèle
+- **Algorithme** : XGBoost (Extreme Gradient Boosting).
+- **Entraînement** : Le modèle a été entraîné sur le jeu de données "Store Item Demand Forecasting Challenge" (Kaggle), comprenant 5 ans de données de ventes historiques pour 50 articles dans 10 magasins.
+- **Preprocessing** : Extraction de caractéristiques temporelles (jour, mois, année, jour de la semaine) pour capturer la saisonnalité.
+
+##  Utilisation de l'API
+L'API expose un point de terminaison `POST /predict` qui accepte des données au format JSON.
+
+**Exemple input de requête :**
+```json
+{
+  "date": "2025-12-30",
+  "store": 1,
+  "item": 1
+}
