@@ -20,13 +20,14 @@ Cette application est une solution complète de **MLOps** dédiée à la prédic
 
 ## Installation et Démarrage local
 1. **Installer les dépendances** :
-   
+   ```bash
    pip install -r requirements.txt
 
 2. **Lancer l'API** :
+   ```bash
    uvicorn src.api.main:app --reload
 
-3. **Tester** :
+4. **Tester** :
    Accédez à http://127.0.0.1:8000/docs.
 
 ## Déploiement Cloud
