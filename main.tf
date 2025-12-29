@@ -39,7 +39,9 @@ output "ecr_repository_url" {
 
 # Le Service App Runner
 resource "aws_apprunner_service" "sales_api_service" {
-  service_name = "apprunner-g1mg07" 
+  service_name = "apprunner-g1mg07"
+
+  depends_on = [aws_iam_role_policy_attachment.apprunner_policy_g1mg07]
 
   source_configuration {
     authentication_configuration {
@@ -67,7 +69,7 @@ resource "aws_iam_role" "apprunner_role_g1mg07" {
         Action = "sts:AssumeRole"
         Effect = "Allow"
         Principal = {
-          Service = "build.apprunner.amazonaws.com"
+          Service = ["build.apprunner.amazonaws.com", "tasks.apprunner.amazonaws.com"]
         }
       },
     ]
